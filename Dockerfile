@@ -6,7 +6,7 @@ RUN pip install --no-cache-dir fastapi uvicorn
 # Copy our HTTP server
 COPY main.py /workspace/main.py
 
-WORKDIR /workspace/mvsep
+WORKDIR /workspace
 
 EXPOSE 8185
 
