@@ -1,0 +1,20 @@
+[cerebrium.deployment]
+name = "demucs-serve"
+docker_base_image_url = "ghcr.io/cyrille8000/ffmpeg-demucs-runpod-template:serverless"
+
+[cerebrium.hardware]
+cpu = 4
+memory = 16.0
+compute = "ADA_L4"
+gpu_count = 1
+
+[cerebrium.scaling]
+min_replicas = 0
+max_replicas = 10
+replica_concurrency = 1
+cooldown = 60
+
+[cerebrium.runtime.custom]
+port = 8185
+healthcheck_endpoint = "/health"
+dockerfile_path = "./Dockerfile"
