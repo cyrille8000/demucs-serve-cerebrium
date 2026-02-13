@@ -34,6 +34,14 @@ def health():
     return {"status": "ok", "models": len(models)}
 
 
+@app.get("/ready")
+def ready():
+    models = list(Path("/models-cache").glob("*"))
+    if len(models) == 0:
+        return {"status": "not ready"}, 503
+    return {"status": "ready"}
+
+
 @app.post("/run")
 def run(input_data: dict):
     """Run demucs-separate and return the result."""
